@@ -7,6 +7,7 @@ template <class T>
 
 class cListaT
 {
+protected:
 	T** lista;
 	int CA, TAM;
 	bool Eliminar_objetos;
