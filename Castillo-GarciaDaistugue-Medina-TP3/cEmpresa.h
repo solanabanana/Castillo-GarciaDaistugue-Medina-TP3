@@ -1,4 +1,5 @@
 #pragma once
+#include "cAlquileres.h"
 class cVehiculo;
 class cCliente;
 using namespace std;
