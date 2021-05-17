@@ -14,8 +14,11 @@ private:
 	int MontoTotal;
 
 public:
-	cAlquiler(cCliente* cliente, cVehiculo* vehiculo, int* cantadicionales, cFecha inicioreserva, cFecha finalreserva);//Monto total lo inicializamos en cero en la definicion del constructor
+	cAlquiler(cCliente* cliente, cVehiculo* vehiculo, int* cantadicionales, cFecha inicioreserva, cFecha finalreserva,int Montototal);//Monto total lo inicializamos en cero en la definicion del constructor
 	~cAlquiler();
 	int CalcularMontoTotal();
+	int CalcularDiasReserva();
+	string to_string();
+	void imprimirAlquiler();
 };
 
