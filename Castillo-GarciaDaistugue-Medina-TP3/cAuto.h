@@ -4,10 +4,11 @@ using namespace std;
 class cAuto :
     public cVehiculo
 {
+    cCargoAdicional* SillaSeguridad;
 public:
-    cAuto(int estado, int npatente, int nchasis, int npoliza, int alquilerxdia, int tarifabase, int capacidadpasajeros, string color, cFecha ultimomantenimiento, cCargoAdicional** cargosadicionales);
+    cAuto(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color, cFecha ultimomantenimiento);
     ~cAuto();
-    int CalcularCargosAdicionales();
-    void PasosMantenimiento();
+    int CalcularTarifa(int dias, int* cantadicionales) const override;
+    void PasosMantenimiento() const override;
 };
 
