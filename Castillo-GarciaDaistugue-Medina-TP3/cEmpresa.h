@@ -1,8 +1,10 @@
 #pragma once
 #include "cAlquileres.h"
+#include "cListaT.h"
 class cVehiculo;
 class cCliente;
 using namespace std;
+
 class cEmpresa
 {
 private: 
