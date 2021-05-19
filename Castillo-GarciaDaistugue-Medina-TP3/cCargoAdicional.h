@@ -11,5 +11,7 @@ class cCargoAdicional
 {
 	const eCargoAdicional tipo;
 	int precio;
+
+	int getPrecio() { return precio; };
 };
 

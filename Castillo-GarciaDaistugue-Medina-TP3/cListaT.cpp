@@ -48,6 +48,15 @@ void cListaT<T>::AgregarObjeto(T* objeto)
 }
 
 template<class T>
+T* cListaT<T>:: Operatorsuma(cListaT<T> &lista , T* objeto)
+{
+	lista.AgregarObjeto(objeto);
+	return lista;
+	
+}
+
+
+template<class T>
 T* cListaT<T>::QuitarObjeto()
 {
 	int i = BuscarObjeto(clave);
@@ -81,4 +90,12 @@ T* cListaT<T>::BuscarObjeto(string clave)
 	}
 	return TAM;
 }
-
+template<class T>
+T* cListaT<T>::Operatorcorchete(int pos)
+{
+	if (pos < CA)
+	{
+		return lista[pos];
+	}
+	return NULL;
+}
