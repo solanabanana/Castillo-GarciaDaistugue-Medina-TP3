@@ -1,6 +1,6 @@
 #include "cMoto.h"
 
-cMoto::cMoto(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color, cFecha ultimomantenimiento): cVehiculo(estado, npatente, nchasis, npoliza, tarifabase, capacidadpasajeros, color, ultimomantenimiento)
+cMoto::cMoto(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color): cVehiculo(estado, npatente, nchasis, npoliza, tarifabase, capacidadpasajeros, color)
 {//constructor de cMoto, llamamos al constructor de cVehiculo
 	AlquilerxDia = 1000;//establecemos el precio del alquiler de unha moto por dia
 	Casco = new cCargoAdicional(eCargoAdicional::CASCO, 100);//Creamos el cargo adicional casco
@@ -23,7 +23,7 @@ int cMoto::CalcularTarifa(int dias, int* cantadicionales) const
 //	return total;//Retornamos cuanto saldrá alquilar la cantidad de cascos los días determinados
 //}
 
-void cMoto::PasosMantenimiento()
+void cMoto::PasosMantenimiento() const
 {//Se imprimn los pasos de mantenimiento de las motos
 	stringstream ss;
 	ss << "Pasos del mantenimiento de las motos:" << endl;

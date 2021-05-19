@@ -7,7 +7,7 @@ class cCombi :
     cCargoAdicional* SillaSeguridad;
     cCargoAdicional* AsientoRebatible;
 public:
-    cCombi(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color, cFecha ultimomantenimiento);
+    cCombi(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color);
     ~cCombi();
     int CalcularTarifa(int dias, int* cantadicionales) const override;
     void PasosMantenimiento() const override;

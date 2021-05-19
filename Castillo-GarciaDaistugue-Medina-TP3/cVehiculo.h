@@ -17,15 +17,17 @@ protected://Atributos y métodos protegidos para que las clases hijas puedan acce
 	const int TarifaBase;//EN DUDA SI EXISTE!!!!!
 	const int CapacidadPasajeros;
 	string Color;
-	cFecha UltimoMantenimiento;
+	cFecha* UltimoMantenimiento;
 
-	virtual int CalcularTarifa(int dias, int* cantadicionales) const = 0;
+	
 	//virtual int CalcularCargosAdicionales(int dias, int* cantadicionales) const = 0;
 	virtual void PasosMantenimiento() const = 0;
 
 
 public: 
-	cVehiculo(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color, cFecha ultimomantenimiento);
+	cVehiculo(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color);
 	~cVehiculo();
+	friend ostream& operator<<(ostream& os, const cVehiculo& vehiculo);
+	virtual int CalcularTarifa(int dias, int* cantadicionales) const = 0;
 };
 

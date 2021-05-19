@@ -9,11 +9,11 @@ class cListaT
 {
 public:
 	T** lista;
-	int CA, TAM;
+	unsigned int CA, TAM;
 	bool Eliminar_objetos;
 	
 
-	cListaT(int TAM, bool eliminar_objetos, int ca);
+	cListaT(int TAM = NMAX);
 	~cListaT();
 
 	void AgregarObjeto(T* objeto);

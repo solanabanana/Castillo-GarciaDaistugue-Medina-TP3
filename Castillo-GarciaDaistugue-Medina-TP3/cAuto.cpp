@@ -1,6 +1,6 @@
 #include "cAuto.h"
 
-cAuto::cAuto(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color, cFecha ultimomantenimiento) : cVehiculo(estado, npatente, nchasis, npoliza, tarifabase, capacidadpasajeros, color, ultimomantenimiento)
+cAuto::cAuto(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color) : cVehiculo(estado, npatente, nchasis, npoliza, tarifabase, capacidadpasajeros, color)
 {
 	AlquilerxDia = 1300;
 	SillaSeguridad = new cCargoAdicional(eCargoAdicional::SILLAS_SEGURIDAD, 500);

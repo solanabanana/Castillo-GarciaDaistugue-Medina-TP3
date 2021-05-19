@@ -1,6 +1,6 @@
 #include "cCombi.h"
 
-cCombi::cCombi(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color, cFecha ultimomantenimiento): cVehiculo(estado, npatente, nchasis, npoliza, tarifabase, capacidadpasajeros, color, ultimomantenimiento)
+cCombi::cCombi(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color): cVehiculo(estado, npatente, nchasis, npoliza, tarifabase, capacidadpasajeros, color)
 {
 	AlquilerxDia = 2000;
 	SillaSeguridad = new cCargoAdicional(eCargoAdicional::SILLAS_SEGURIDAD, 500);

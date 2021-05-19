@@ -2,10 +2,9 @@
 #define NMAX = 100;
 
 template<class T>
-cListaT<T>::cListaT(int TAM, bool eliminar_objetos, int ca)
+cListaT<T>::cListaT(int TAM)
 {
-	TAM = NMAX;
-	eliminar_objetos = false;
+	Eliminar_objetos = false;
 	this->CA = ca;
 	try {//NO ESTOY SEGURA DE ESTO
 
