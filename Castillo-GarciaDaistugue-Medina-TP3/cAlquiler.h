@@ -8,7 +8,7 @@ class cAlquiler
 private:
 	cCliente* Cliente;
 	cVehiculo* Vehiculo;//cuando creamos un alquiler, usamos dynamic cast aca
-	int* cantElementosAdicionales;//Habra 1 o 2 cargos adicionales dependiendo del tipo de vehiculo
+	int* cantElementosAdicionales;//Habra 1 o 2 cargos adicionales dependiendo del tipo de vehiculo, si la cantidad es cero es pq no alquilo nada de ese elemento
 	cFecha InicioReserva;
 	cFecha FinalReserva;
 	int MontoTotal;

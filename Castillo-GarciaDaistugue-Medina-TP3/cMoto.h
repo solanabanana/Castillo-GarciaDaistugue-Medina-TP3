@@ -4,10 +4,13 @@ using namespace std;
 class cMoto :
     public cVehiculo
 {
+    cCargoAdicional* Casco;
 public:
-    cMoto(int estado, int npatente, int nchasis, int npoliza, int alquilerxdia, int tarifabase, int capacidadpasajeros, string color, cFecha ultimomantenimiento, cCargoAdicional** cargosadicionales);
+    cMoto(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color, cFecha ultimomantenimiento);
     ~cMoto();
-    int CalcularCargosAdicionales();
+
+    int CalcularTarifa(int dias, int* cantadicionales) const override;
+    //int CalcularCargosAdicionales(int dias, int* cantadicionales) const override;
     void PasosMantenimiento();
 };
 
