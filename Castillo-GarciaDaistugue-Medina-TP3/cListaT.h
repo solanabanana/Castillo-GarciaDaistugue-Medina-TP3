@@ -11,17 +11,28 @@ public:
 	T** lista;
 	int CA, TAM;
 	bool Eliminar_objetos;
-
+	
 
 	cListaT(int TAM, bool eliminar_objetos, int ca);
 	~cListaT();
 
 	void AgregarObjeto(T* objeto);
-	T* Operatorsuma(cListaT<T>& lista, T* objeto);
+	T* operator+(cListaT<T>& lista, T* objeto)
+	{
+		lista.AgregarObjeto(objeto);
+		return lista;
+	}
 	T* QuitarObjeto();
 	void EliminarObjeto();
 	T* BuscarObjeto(string clave);
-	T* Operatorcorchete(int pos);
+	T* operator[](unsigned int pos)
+	{
+		if (pos < CA)
+		{
+			return lista[pos];
+		}
+		return NULL;
+	}
 };
 
 

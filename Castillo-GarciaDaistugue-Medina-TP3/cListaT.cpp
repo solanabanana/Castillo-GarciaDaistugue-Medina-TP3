@@ -47,13 +47,10 @@ void cListaT<T>::AgregarObjeto(T* objeto)
 	else throw new exception("No se puede un nuevo elemento a la lista");
 }
 
-template<class T>
-T* cListaT<T>:: Operatorsuma(cListaT<T> &lista , T* objeto)
-{
-	lista.AgregarObjeto(objeto);
-	return lista;
-	
-}
+
+
+
+
 
 
 template<class T>
@@ -89,13 +86,4 @@ T* cListaT<T>::BuscarObjeto(string clave)
 			return i;
 	}
 	return TAM;
-}
-template<class T>
-T* cListaT<T>::Operatorcorchete(int pos)
-{
-	if (pos < CA)
-	{
-		return lista[pos];
-	}
-	return NULL;
 }
