@@ -11,7 +11,7 @@ cListaT<T>::cListaT(int TAM)
 
 		if (ca == TAM)
 		{
-			throw new exception("No se puede un nuevo elemento a la lista");
+			cout << "No se puede un nuevo elemento a la lista" << endl;
 		}
 	}
 	else {
