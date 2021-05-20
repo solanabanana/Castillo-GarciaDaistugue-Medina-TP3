@@ -18,6 +18,7 @@ protected://Atributos y métodos protegidos para que las clases hijas puedan acce
 	const int CapacidadPasajeros;
 	string Color;
 	cFecha* UltimoMantenimiento;
+	bool Alquilado;
 	
 	//virtual int CalcularCargosAdicionales(int dias, int* cantadicionales) const = 0;
 	virtual void PasosMantenimiento() const = 0;
@@ -31,5 +32,6 @@ public:
 	string getClave();
 	int getEstado();
 	void setMantenimiento();
+	bool getAlquilado();
 };
 
