@@ -14,11 +14,10 @@ protected://Atributos y métodos protegidos para que las clases hijas puedan acce
 	const int Nchasis;
 	const int Npoliza;
 	int AlquilerxDia;
-	const int TarifaBase;//EN DUDA SI EXISTE!!!!!
+	const int TarifaBase;
 	const int CapacidadPasajeros;
 	string Color;
 	cFecha* UltimoMantenimiento;
-
 	
 	//virtual int CalcularCargosAdicionales(int dias, int* cantadicionales) const = 0;
 	virtual void PasosMantenimiento() const = 0;
@@ -29,5 +28,8 @@ public:
 	~cVehiculo();
 	friend ostream& operator<<(ostream& os, const cVehiculo& vehiculo);
 	virtual int CalcularTarifa(int dias, int* cantadicionales) const = 0;
+	string getClave();
+	int getEstado();
+	void setMantenimiento();
 };
 

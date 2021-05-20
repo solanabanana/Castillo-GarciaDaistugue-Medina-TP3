@@ -16,5 +16,6 @@ public:
 		this->DNI = DNI;
 	}
 	~cCliente(){}
+	string getClave() { return DNI; }
 };
 

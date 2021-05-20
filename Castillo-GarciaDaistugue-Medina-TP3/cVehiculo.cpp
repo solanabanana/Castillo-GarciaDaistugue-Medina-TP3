@@ -8,6 +8,18 @@ cVehiculo::cVehiculo(int estado, int npatente, int nchasis, int npoliza, int tar
 }
 
 cVehiculo::~cVehiculo(){}
+string cVehiculo::getClave()
+{
+	return to_string(Npatente);
+}
+int cVehiculo::getEstado()
+{
+	return Estado;
+}
+void cVehiculo::setMantenimiento()
+{
+	UltimoMantenimiento->setMantenimiento();
+}
 ostream& operator<<(ostream& os, const cVehiculo& vehiculo)//operator imprimir
 {
 	os << "Estado: " << vehiculo.Estado << endl;

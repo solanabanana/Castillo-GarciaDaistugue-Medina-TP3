@@ -35,16 +35,7 @@ cListaT<T>::~cListaT()
 	}
 }
 
-template<class T>
-void cListaT<T>::AgregarObjeto(T* objeto)
-{
 
-	if (CA < TAM)
-	{
-		lista[CA++] = objeto;
-	}
-	else throw new exception("No se puede un nuevo elemento a la lista");
-}
 
 
 
@@ -55,9 +46,7 @@ void cListaT<T>::AgregarObjeto(T* objeto)
 template<class T>
 T* cListaT<T>::QuitarObjeto()
 {
-	int i = BuscarObjeto(clave);
-	T* aux = NULL;
-	aux = lista[i];
+	T* aux = BuscarObjeto(clave);
 	for ( int k = i; k < CA-1; k++)
 	{
 		lista[k] = lista[k + 1];
@@ -77,12 +66,23 @@ void cListaT<T>::EliminarObjeto()
 }
 
 template<class T>
-T* cListaT<T>::BuscarObjeto(string clave)
+int cListaT<T>::BuscarObjetoPos(string clave)
 {
 	for (int i = 0; i < CA; i++)
 	{
-		if (*lista[i] == Clave)
+		if (lista[i]->getClave() == Clave)
 			return i;
 	}
 	return TAM;
 }
+
+template<class T>
+T* cListaT<T>::BuscarObjeto(string clave)
+{
+	int pos = BuscarObjetoPos(clave);
+	if (pos < ca)
+		return lista[pos];
+	return NULL;
+}
+
+

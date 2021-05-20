@@ -8,13 +8,14 @@ class cAlquiler
 private:
 	cCliente* Cliente;
 	cVehiculo* Vehiculo;//cuando creamos un alquiler, usamos dynamic cast aca
-	int* cantElementosAdicionales;//Habra 1 o 2 cargos adicionales dependiendo del tipo de vehiculo, si la cantidad es cero es pq no alquilo nada de ese elemento
-	cFecha InicioReserva;
-	cFecha FinalReserva;
+	int Adicional1;
+	int Adicional2;
+	cFecha* InicioReserva;
+	cFecha* FinalReserva;
 	int MontoTotal;
 
 public:
-	cAlquiler(cCliente* cliente, cVehiculo* vehiculo, int* cantadicionales, cFecha inicioreserva, cFecha finalreserva,int Montototal);//Monto total lo inicializamos en cero en la definicion del constructor
+	cAlquiler(cCliente* cliente, cVehiculo* vehiculo, int adicional1, int adicional2, cFecha* inicioreserva, cFecha* finalreserva);//Monto total lo inicializamos en cero en la definicion del constructor
 	~cAlquiler();
 	int CalcularMontoTotal();
 	int CalcularDiasReserva();

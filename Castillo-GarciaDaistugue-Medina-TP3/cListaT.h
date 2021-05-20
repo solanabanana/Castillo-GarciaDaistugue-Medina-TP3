@@ -17,22 +17,29 @@ public:
 	~cListaT();
 
 	void AgregarObjeto(T* objeto);
-	T* operator+(cListaT<T>& lista, T* objeto)
-	{
-		lista.AgregarObjeto(objeto);
-		return lista;
-	}
 	T* QuitarObjeto();
 	void EliminarObjeto();
+	int BuscarObjetoPos(string clave);
 	T* BuscarObjeto(string clave);
-	T* operator[](unsigned int pos)
+	void operator+(T* objeto);
+	T* operator[](string clave)
 	{
-		if (pos < CA)
-		{
-			return lista[pos];
-		}
-		return NULL;
+		return BuscarObjeto(clave);
 	}
 };
+template<class T>
+void cListaT<T>::AgregarObjeto(T* objeto)
+{
 
+	if (CA < TAM)
+	{
+		lista[CA++] = objeto;
+	}
+	else throw new exception("No se puede un nuevo elemento a la lista");
+}
+template<class T>
+void cListaT<T>::operator+(T* objeto)
+{
+	lista.AgregarObjeto(objeto);
+}
 

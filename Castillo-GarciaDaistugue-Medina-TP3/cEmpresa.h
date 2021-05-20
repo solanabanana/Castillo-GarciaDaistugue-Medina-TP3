@@ -11,12 +11,12 @@ using namespace std;
 class cEmpresa
 {
 private: 
-	cListaT<cVehiculo>* vehiculos;
-	cListaT<cCliente>* clientes;
+	cListaT<cVehiculo> vehiculos;
+	cListaT<cCliente> clientes;
 	cAlquileres* alquileres;
 public:
-	cEmpresa(cVehiculo* Vehiculos, cCliente* Clientes, cAlquileres* Alquileres);
+	cEmpresa(cListaT<cVehiculo> Vehiculos, cListaT<cCliente> Clientes, cAlquileres* Alquileres);
 	//~cEmpresa();
-	void RealizarMantenimiento(cVehiculo* vehiculo);
+	void RealizarMantenimiento(string clave);
 };
 
