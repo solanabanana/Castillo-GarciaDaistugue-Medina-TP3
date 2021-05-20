@@ -35,7 +35,7 @@ void cListaT<T>::AgregarObjeto(T* objeto)
 	{
 		lista[CA++] = objeto;
 	}
-	else throw new exception("No se puede un nuevo elemento a la lista");
+	cout << "No se puede un nuevo elemento a la lista" << endl;
 }
 template<class T>
 void cListaT<T>::operator+(T* objeto)
