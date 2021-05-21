@@ -1,10 +1,8 @@
 #include "cEmpresa.h"
-#include"cVehiculo.h"
 #include "cMoto.h"
 #include "cAuto.h"
 #include "cCamioneta.h"
 #include "cCombi.h"
-#include "cFecha.h"
 
 #define NMAX 20
 
@@ -60,19 +58,21 @@ void cEmpresa::RealizarMantenimiento(string clave)//Recibe la patente del auto
 //creamos un alquiler en la empresa
 void cEmpresa::Alquiler( string dni, string patente, int adicional1, int adicional2, string inicioreserva, string finalreserva)
 {
-	
 		cAlquiler* alquiler = NULL;
-	
 		cCliente* cliente=clientes[dni];
 		cVehiculo* vehiculo = vehiculos[patente];
+		int destruccion = 0;
 		//verificamos que el vehiculo no este previamente alquilado
-		if (vehiculo->getAlquilado() == false)
+		if (vehiculo->getAlquilado() == false)//Si el vehiculo esta disponible
 		{
-			alquiler = new cAlquiler(cliente, vehiculo, adicional1, adicional2);
+			srand(time(NULL));
+			alquiler = new cAlquiler(cliente, vehiculo, adicional1, adicional2);//Creamos un nuevo alquiler
 			alquiler->setInicio(inicioreserva);
 			alquiler->setFinal(finalreserva);
-			alquileres + alquiler;
-			vehiculo->setAlquilado();
+			alquileres + alquiler;//Lo agregamos a las lista de alquileres
+			vehiculo->setAlquilado();//Le cambiamos el estado al vehiculo, esta alquilado ahora
+			destruccion = 10 + rand() % 91;//Hacemos un nivel de desctruccion aleatorio entre 10 y 100
+			vehiculo->setEstado(destruccion);
 		}
 }
 

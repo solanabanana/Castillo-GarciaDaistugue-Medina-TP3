@@ -37,4 +37,46 @@ public:
 	}
 };
 
+}
+template<class T>
+T* cListaT<T>::QuitarObjeto()
+{
+	T* aux = BuscarObjeto(clave);
+	for (int k = i; k < CA - 1; k++)
+	{
+		lista[k] = lista[k + 1];
+
+	}
+	lista[CA--] = NULL;
+	return aux;
+}
+
+template<class T>
+void cListaT<T>::EliminarObjeto()
+{
+
+	T* aux = QuitarObjeto();
+	IF(aux != NULL)
+		delete aux;
+}
+
+template<class T>
+int cListaT<T>::BuscarObjetoPos(string clave)
+{
+	for (int i = 0; i < CA; i++)
+	{
+		if (lista[i]->getClave() == Clave)
+			return i;
+	}
+	return TAM;
+}
+
+template<class T>
+T* cListaT<T>::BuscarObjeto(string clave)
+{
+	int pos = BuscarObjetoPos(clave);
+	if (pos < ca)
+		return lista[pos];
+	return NULL;
+}
 

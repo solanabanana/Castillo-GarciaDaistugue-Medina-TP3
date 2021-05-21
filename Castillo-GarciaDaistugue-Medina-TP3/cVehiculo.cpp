@@ -13,6 +13,10 @@ string cVehiculo::getClave()
 {
 	return to_string(Npatente);
 }
+int cVehiculo::setEstado(int nivel)
+{
+	Estado = nivel;
+}
 int cVehiculo::getEstado()
 {
 	return Estado;
