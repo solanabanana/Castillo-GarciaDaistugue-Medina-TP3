@@ -64,7 +64,9 @@ void cEmpresa::Alquiler( string dni, string patente, int adicional1, int adicion
 		//verificamos que el vehiculo no este previamente alquilado
 		if (vehiculo->getAlquilado() == false)
 		{
-			alquiler = new cAlquiler(cliente, vehiculo, adicional1, adicional2, inicioreserva, finalreserva);
+			alquiler = new cAlquiler(cliente, vehiculo, adicional1, adicional2);
+			alquiler->setInicio(inicioreserva);
+			alquiler->setFinal(finalreserva);
 			alquileres + alquiler;
 			vehiculo->setAlquilado();
 		}

@@ -1,14 +1,12 @@
 #include "cAlquiler.h"
 
-cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo, int adicional1, int adicional2, cFecha* inicioreserva, cFecha* finalreserva)
+cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo, int adicional1, int adicional2)
 {
 	Cliente = cliente;
 	Vehiculo = vehiculo;
 	Adicional1 = adicional1;
 	Adicional2 = adicional2;
 	MontoTotal = 0;
-	InicioReserva = inicioreserva;
-	FinalReserva = finalreserva;
 }
 
 cAlquiler::~cAlquiler()
