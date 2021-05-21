@@ -12,11 +12,11 @@ cCombi::~cCombi(){
 	if (AsientoRebatible != NULL) delete AsientoRebatible;
 }
 
-int cCombi::CalcularTarifa(int dias, int* cantadicionales) const
+int cCombi::CalcularTarifa(int dias, int adicional1, int adicional2) const
 {
 	int total = 0;
 	total = TarifaBase + AlquilerxDia * dias;//Calculamos la tarifa base
-	total += dias * (SillaSeguridad->getPrecio() * cantadicionales[0] + AsientoRebatible->getPrecio() * cantadicionales[1]);
+	total += dias * (SillaSeguridad->getPrecio() * adicional1 + AsientoRebatible->getPrecio() * adicional2);
 }
 
 void cCombi::PasosMantenimiento() const

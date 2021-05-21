@@ -13,7 +13,7 @@ int main()
     cVehiculo* nuevo;
     nuevo = new cMoto(100, 123, 987, 12345, 500, 2, "Negro");
     lista_vehiculos + nuevo;
-    cout << "Primer vehiculo que creamos: " << nuevo;//Probamos el operator <<
+    //cout << "Primer vehiculo que creamos: " << nuevo;//Probamos el operator <<
     nuevo = new cMoto(100, 456, 654, 6789, 500, 1, "Rosa");
     lista_vehiculos + nuevo;
     nuevo = new cAuto(100, 789, 321, 1357, 700, 5, "Rojo");
@@ -22,6 +22,10 @@ int main()
     lista_vehiculos + nuevo;
     nuevo = new cCombi(100, 111, 654, 1928, 1000, 12, "Violeta");
     lista_vehiculos + nuevo;
+    for (int i = 0; i < 4; ++i)//Probamos el operator <<
+    {
+        cout << "Vehiculo " << to_string(i + 1) << ": " << lista_vehiculos[i];
+    }
     //Nos creamos una lista de clientes y le agregamos clientes
     cListaT<cCliente> lista_clientes;
     cCliente* cliente;
@@ -48,6 +52,7 @@ int main()
     fin->setFecha(2, 6, 2021);
     alquiler = new cAlquiler(lista_clientes["42156988"], lista_vehiculos["456"], 2, 0, inicio, fin);*/
     cEmpresa* empresa = new cEmpresa(lista_vehiculos, lista_clientes, alquileres);
+    empresa->Alquilar("42116766", "123", 1, 0, "20/5/2021", "31/5/2021");
     int total = alquileres->CalcularGananciaTotal();
     empresa->RealizarMantenimiento("111");
 

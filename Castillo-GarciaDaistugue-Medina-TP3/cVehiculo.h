@@ -18,6 +18,7 @@ protected://Atributos y métodos protegidos para que las clases hijas puedan acce
 	const int CapacidadPasajeros;
 	string Color;
 	cFecha* UltimoMantenimiento;
+	bool Alquilado;
 	
 	//virtual int CalcularCargosAdicionales(int dias, int* cantadicionales) const = 0;
 	virtual void PasosMantenimiento() const = 0;
@@ -27,9 +28,11 @@ public:
 	cVehiculo(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color);
 	~cVehiculo();
 	friend ostream& operator<<(ostream& os, const cVehiculo& vehiculo);
-	virtual int CalcularTarifa(int dias, int* cantadicionales) const = 0;
+	virtual int CalcularTarifa(int dias, int adicional1, int adicional2) const = 0;
 	string getClave();
 	int getEstado();
 	void setMantenimiento();
+	bool getAlquilado();
+	void setAlquilado();
 };
 

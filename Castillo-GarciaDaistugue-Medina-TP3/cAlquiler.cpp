@@ -34,3 +34,34 @@ int cAlquiler::CalcularDiasReserva()
 
 	return diasreserva;
 }
+
+void cAlquiler::setInicio(string fecha)
+{
+	string dia, mes, anio;
+	int init = 0;
+	int end = 0;
+	end = fecha.find("/", init);
+	dia.substr(init, end - init);
+	init = end + 1;
+	end = fecha.find("/", init);
+	mes.substr(init, end - init);
+	init = end + 1;
+	anio.substr(init, sizeof(fecha) - init);
+	InicioReserva->setFecha(stoi(dia), stoi(mes), stoi(anio));
+
+}
+
+void cAlquiler::setFinal(string fecha)
+{
+	string dia, mes, anio;
+	int init = 0;
+	int end = 0;
+	end = fecha.find("/", init);
+	dia.substr(init, end - init);
+	init = end + 1;
+	end = fecha.find("/", init);
+	mes.substr(init, end - init);
+	init = end + 1;
+	anio.substr(init, sizeof(fecha) - init);
+	FinalReserva->setFecha(stoi(dia), stoi(mes), stoi(anio));
+}

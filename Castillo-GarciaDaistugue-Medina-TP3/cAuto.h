@@ -8,7 +8,7 @@ class cAuto :
 public:
     cAuto(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color);
     ~cAuto();
-    int CalcularTarifa(int dias, int* cantadicionales) const override;
+    int CalcularTarifa(int dias, int adicional1, int adicional2) const override;
     void PasosMantenimiento() const override;
 };
 

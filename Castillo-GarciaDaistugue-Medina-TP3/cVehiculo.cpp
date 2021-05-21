@@ -5,6 +5,7 @@ cVehiculo::cVehiculo(int estado, int npatente, int nchasis, int npoliza, int tar
 {
 	this->Color = color;
 	this->UltimoMantenimiento = NULL;
+	Alquilado = false;
 }
 
 cVehiculo::~cVehiculo(){}
@@ -19,6 +20,15 @@ int cVehiculo::getEstado()
 void cVehiculo::setMantenimiento()
 {
 	UltimoMantenimiento->setMantenimiento();
+}
+bool cVehiculo::getAlquilado()
+{
+	return Alquilado;
+}
+void cVehiculo::setAlquilado()
+{
+	if (!Alquilado) Alquilado = true;
+	if (Alquilado) Alquilado = false;
 }
 ostream& operator<<(ostream& os, const cVehiculo& vehiculo)//operator imprimir
 {

@@ -8,11 +8,11 @@ cMoto::cMoto(int estado, int npatente, int nchasis, int npoliza, int tarifabase,
 
 cMoto::~cMoto() { if(Casco != NULL) delete Casco; }//Se llama al destructor de cVehiculo aca?
 
-int cMoto::CalcularTarifa(int dias, int* cantadicionales) const
+int cMoto::CalcularTarifa(int dias, int adicional1, int adicional2) const
 {
 	int total = 0;
 	total = TarifaBase + AlquilerxDia * dias;//Calculamos la tarifa base
-	total += dias * (Casco->getPrecio() * cantadicionales[0]);//Como las motos solo tienen un cargo adicional, sabemos que la cantidad de cascos alquilados estara en la primera posicion
+	total += dias * (Casco->getPrecio() * adicional1);//Como las motos solo tienen un cargo adicional, sabemos que la cantidad de cascos alquilados estara en la primera posicion
 	return total;//Retornamos cuanto saldrá alquilar la cantidad de cascos los días determinados
 }
 

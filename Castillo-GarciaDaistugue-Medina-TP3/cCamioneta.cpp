@@ -13,11 +13,11 @@ cCamioneta::~cCamioneta()
 	if (Portaequipajes != NULL)delete Portaequipajes;
 }
 
-int cCamioneta::CalcularTarifa(int dias, int* cantadicionales) const
+int cCamioneta::CalcularTarifa(int dias, int adicional1, int adicional2) const
 {
 	int total = 0;
 	total = TarifaBase + AlquilerxDia * dias;//Calculamos la tarifa base
-	total += dias * (SillaSeguridad->getPrecio() * cantadicionales[0] + Portaequipajes->getPrecio() * cantadicionales[1]);//Como las camionetas tienen dos posibles cargos adicionales
+	total += dias * (SillaSeguridad->getPrecio() * adicional2 + Portaequipajes->getPrecio() * adicional2);//Como las camionetas tienen dos posibles cargos adicionales
 	return total;//Retornamos la tarifa total
 }
 
