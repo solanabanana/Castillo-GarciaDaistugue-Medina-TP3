@@ -19,6 +19,8 @@ public:
 	~cAlquiler();
 	int CalcularMontoTotal();
 	int CalcularDiasReserva();
+	void setInicio(string fecha);
+	void setFinal(string fecha);
 	string to_string();
 	void imprimirAlquiler();
 };

@@ -11,11 +11,11 @@ cAuto::~cAuto()
 	if (SillaSeguridad != NULL) delete SillaSeguridad;
 }
 
-int cAuto::CalcularTarifa(int dias, int* cantadicionales) const
+int cAuto::CalcularTarifa(int dias, int adicional1, int adicional2) const
 {
 	int total = 0;
 	total = TarifaBase + AlquilerxDia * dias;//Calculamos la tarifa base
-	total += dias * (SillaSeguridad->getPrecio() * cantadicionales[0]);//Como los autos solo tienen un cargo adicional, sabemos que la cantidad de sillas de seg alquiladas estara en la primera posicion
+	total += dias * (SillaSeguridad->getPrecio() * adicional1);//Como los autos solo tienen un cargo adicional, sabemos que la cantidad de sillas de seg alquiladas estara en adicional1
 	return total;//Retornamos cuanto saldrá alquilar la cantidad de cascos los días determinados
 }
 
