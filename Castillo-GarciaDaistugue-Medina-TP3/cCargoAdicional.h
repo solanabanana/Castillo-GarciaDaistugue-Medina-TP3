@@ -1,6 +1,6 @@
 #pragma once
 using namespace std;
-typedef enum
+typedef enum//enum para clasificar tipo de cargos
 {
 	CASCO,
 	SILLAS_SEGURIDAD,
@@ -8,10 +8,11 @@ typedef enum
 	ASIENTO_REBATIBLE
 } eCargoAdicional;
 class cCargoAdicional
-{
+{// atrubutos
 	const eCargoAdicional Tipo;
 	int Precio;
 public:
+	//constructor y getter
 	cCargoAdicional(eCargoAdicional tipo, int precio): Tipo(tipo)
 	{
 		this->Precio = precio;

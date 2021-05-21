@@ -10,13 +10,17 @@ using namespace std;
 
 class cEmpresa
 {
-private: 
+private:
+	//atributos
 	cListaT<cVehiculo> vehiculos;
 	cListaT<cCliente> clientes;
-	cAlquileres* alquileres;
+	cAlquileres alquileres;
 public:
-	cEmpresa(cListaT<cVehiculo> Vehiculos, cListaT<cCliente> Clientes, cAlquileres* Alquileres);
+	//contructor
+	cEmpresa(cListaT<cVehiculo> Vehiculos, cListaT<cCliente> Clientes, cAlquileres Alquileres);
 	//~cEmpresa();
+	//metodos
 	void RealizarMantenimiento(string clave);
+	void Alquiler(string dni, string patente, int adicional1, int adicional2, cFecha* inicioreserva, cFecha* finalreserva);
 };
 

@@ -8,38 +8,29 @@ template <class T>
 class cListaT
 {
 public:
+//atributos
 	T** lista;
 	unsigned int CA, TAM;
 	bool Eliminar_objetos;
 	
-
+	//contructor y destructor
 	cListaT(int TAM = NMAX);
 	~cListaT();
-
+	//metodos de la lista
 	void AgregarObjeto(T* objeto);
 	T* QuitarObjeto();
 	void EliminarObjeto();
 	int BuscarObjetoPos(string clave);
 	T* BuscarObjeto(string clave);
-	void operator+(T* objeto);
+	//sobrecarga de operadores
+	void operator+(T* objeto)
+	{
+		lista.AgregarObjeto(objeto);
+	};
 	T* operator[](string clave)
 	{
 		return BuscarObjeto(clave);
-	}
+	};
 };
-template<class T>
-void cListaT<T>::AgregarObjeto(T* objeto)
-{
 
-	if (CA < TAM)
-	{
-		lista[CA++] = objeto;
-	}
-	cout << "No se puede un nuevo elemento a la lista" << endl;
-}
-template<class T>
-void cListaT<T>::operator+(T* objeto)
-{
-	lista.AgregarObjeto(objeto);
-}
 

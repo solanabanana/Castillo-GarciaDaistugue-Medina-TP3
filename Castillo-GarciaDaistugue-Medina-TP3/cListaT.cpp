@@ -1,30 +1,27 @@
 #include "cListaT.h"
 #define NMAX = 100;
-
+//constructor 
 template<class T>
 cListaT<T>::cListaT(int TAM)
 {
-	Eliminar_objetos = false;
+	Eliminar_objetos = false;//por defaullt
 	this->CA = ca;
-	try {//NO ESTOY SEGURA DE ESTO
-
-
-		if (ca == TAM)
-		{
-			cout << "No se puede un nuevo elemento a la lista" << endl;
-		}
+	
+	if (ca == TAM)//si no hay mas espacio
+	{
+			cout << "No se puede crear" << endl;
 	}
 	else {
 		for (int i = 0; i < T; i++)
 		{
-			lista[i] = NULL;
+			lista[i] = NULL;//creo y apunto a null
 		}
 	}
 
 }
 template<class T>
 cListaT<T>::~cListaT()
-{
+{//borro memoria
 	if (lista != NULL) {
 		for (int i = 0; i < ca; i++)
 		{
@@ -35,14 +32,20 @@ cListaT<T>::~cListaT()
 	}
 }
 
+template<class T>
+void cListaT<T>::AgregarObjeto(T* objeto)
+{
 
-
-
-
-
-
-
-
+	if (CA < TAM)
+	{
+		lista[CA++] = objeto;
+	}
+	else
+	{
+		cout << "No se puede agregar  un nuevo elemento a la lista" << endl;
+	}
+	
+}
 template<class T>
 T* cListaT<T>::QuitarObjeto()
 {

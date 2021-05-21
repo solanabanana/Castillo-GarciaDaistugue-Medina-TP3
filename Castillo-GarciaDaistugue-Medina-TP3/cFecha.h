@@ -12,12 +12,14 @@ public:
 	void setFecha(int dia, int mes, int anio);//creo cpp?
 	void setMantenimiento();
 };
+//constructor que no resulto ser necesario ya que es como el setter
 //cFecha::cFecha(int dia, int mes, int anio)
 //{
 //	this->Dia = dia;
 //	this->Mes = mes;
 //	this->Anio = anio;
 //}
+//setter de fecha
 void cFecha::setFecha(int dia, int mes, int anio)
 {
 	Dia = dia;
@@ -25,7 +27,7 @@ void cFecha::setFecha(int dia, int mes, int anio)
 	Anio = anio;
 
 }
-
+//setter de actualizar fecha de manteniiento
 void cFecha::setMantenimiento()
 {
 	time_t t = time(0);
