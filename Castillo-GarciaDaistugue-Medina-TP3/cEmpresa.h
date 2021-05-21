@@ -21,6 +21,6 @@ public:
 	//~cEmpresa();
 	//metodos
 	void RealizarMantenimiento(string clave);
-	void Alquiler(string dni, string patente, int adicional1, int adicional2, cFecha* inicioreserva, cFecha* finalreserva);
+	void Alquiler(string dni, string patente, int adicional1, int adicional2, string inicioreserva, string finalreserva);
 };
 

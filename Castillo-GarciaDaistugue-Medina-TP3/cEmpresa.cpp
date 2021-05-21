@@ -54,7 +54,7 @@ void cEmpresa::RealizarMantenimiento(string clave)//Recibe la patente del auto
 
 }
 //creamos un alquiler en la empresa
-void cEmpresa::Alquiler( string dni, string patente, int adicional1, int adicional2, cFecha* inicioreserva, cFecha* finalreserva)
+void cEmpresa::Alquiler( string dni, string patente, int adicional1, int adicional2, string inicioreserva, string finalreserva)
 {
 	
 		cAlquiler* alquiler = NULL;
@@ -66,7 +66,7 @@ void cEmpresa::Alquiler( string dni, string patente, int adicional1, int adicion
 		{
 			alquiler = new cAlquiler(cliente, vehiculo, adicional1, adicional2, inicioreserva, finalreserva);
 			alquileres + alquiler;
-			vehiculo->setAlquilado(true);
+			vehiculo->setAlquilado();
 		}
 }
 
