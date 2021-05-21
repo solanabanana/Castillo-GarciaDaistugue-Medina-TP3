@@ -18,7 +18,11 @@ cEmpresa::cEmpresa(cListaT<cVehiculo> Vehiculos, cListaT<cCliente> Clientes, cAl
 //metodos
 void cEmpresa::RealizarMantenimiento(string clave)//Recibe la patente del auto
 {
+
+	if (vehiculos[clave]->getEstado() < 75)//si esta en un mal estado
+
 	if (vehiculos[clave]->getEstado() < 75 && vehiculos[clave]->getAlquilado() == true)//Si el estado del vehiculo es menor del 75%
+
 	{
 		cMoto* moto = dynamic_cast<cMoto*>(vehiculos[clave]);
 		cAuto* automovil = dynamic_cast<cAuto*>(vehiculos[clave]);
@@ -71,3 +75,4 @@ void cEmpresa::Alquiler( string dni, string patente, int adicional1, int adicion
 			vehiculo->setAlquilado();
 		}
 }
+
