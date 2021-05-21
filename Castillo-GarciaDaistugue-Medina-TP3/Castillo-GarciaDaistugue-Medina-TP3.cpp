@@ -39,22 +39,19 @@ int main()
     lista_clientes + cliente;
     cliente = new cCliente("Bianca", "Del Rio", "30912586");
     lista_clientes + cliente;
-    cAlquileres* alquileres;
-    /*cFecha* inicio;
-    cFecha* fin;
-    inicio->setFecha(20, 5, 2021);
-    fin->setFecha(31, 5, 2021);
-    cAlquiler* alquiler = new cAlquiler(lista_clientes["42116766"], lista_vehiculos["123"], 1, 0, inicio, fin);
-    alquileres + alquiler;
-    inicio = new cFecha();
-    fin = new cFecha();
-    inicio->setFecha(24, 5, 2021);
-    fin->setFecha(2, 6, 2021);
-    alquiler = new cAlquiler(lista_clientes["42156988"], lista_vehiculos["456"], 2, 0, inicio, fin);*/
+    cAlquileres alquileres;
     cEmpresa* empresa = new cEmpresa(lista_vehiculos, lista_clientes, alquileres);
-    empresa->Alquilar("42116766", "123", 1, 0, "20/5/2021", "31/5/2021");
-    int total = alquileres->CalcularGananciaTotal();
+    empresa->Alquiler("42116766", "123", 1, 0, "20/5/2021", "31/5/2021");
+    empresa->Alquiler("42156988", "456", 2, 0, "30/5/2021", "8/6/2021");
+    empresa->Alquiler("20685689", "789", 1, 0, "23/5/2021", "29/5/2021");
+    empresa->Alquiler("35421578", "101", 1, 1, "15/5/2021", "21/6/2021");
+    empresa->Alquiler("30912586", "111", 0, 3, "21/5/2021", "30/5/2021");
+    int total = alquileres.CalcularGananciaTotal();
+    empresa->RealizarMantenimiento("123");
+    empresa->RealizarMantenimiento("456");
+    empresa->RealizarMantenimiento("789");
+    empresa->RealizarMantenimiento("101");
     empresa->RealizarMantenimiento("111");
-
+    //HACER LOS TRY-CATCHHHHHHH
 }
 
