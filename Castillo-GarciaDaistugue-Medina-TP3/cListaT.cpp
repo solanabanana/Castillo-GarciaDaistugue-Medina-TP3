@@ -41,7 +41,7 @@ void cListaT<T>::AgregarObjeto(T* objeto)
 		lista[CA++] = objeto;
 	}
 	else
-	{
+	{//excepcion
 		cout << "No se puede agregar  un nuevo elemento a la lista" << endl;
 	}
 	
