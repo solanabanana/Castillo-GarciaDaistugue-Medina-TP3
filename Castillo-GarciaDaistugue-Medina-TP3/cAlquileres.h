@@ -1,12 +1,13 @@
 #pragma once
 #include "cListaT.h"
 #include "cAlquiler.h"
-#include<cVehiculo.h>
+#include"cVehiculo.h"
 #include"cAuto.h"
 #include <sstream>
 #include <string>
 using namespace std;
 class cAlquileres :
+
     public cListaT<cAlquiler>
 {
 private:
@@ -14,7 +15,7 @@ private:
 
 public:
     //------Constructor y Destructor---//
-    cAlquileres(Ganancia_Total);
+    cAlquileres(int Ganancia_Total);
     ~cAlquileres();
     //-----Verifica tipo de Vehiculo------//
     bool EsMoto(cVehiculo* TIPO);
