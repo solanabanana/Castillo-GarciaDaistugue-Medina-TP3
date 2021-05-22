@@ -19,5 +19,7 @@ public:
 	~cCliente(){}
 	//getter 
 	string getClave() { return DNI; }
+	string to_stringCliente();
+	void ImprimirCliente();
 };
 

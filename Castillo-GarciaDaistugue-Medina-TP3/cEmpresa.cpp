@@ -47,13 +47,15 @@ void cEmpresa::RealizarMantenimiento(string clave)//Recibe la patente del auto
 			combi->PasosMantenimiento();
 			combi->setMantenimiento();
 		}
+		delete moto;
+		delete automovil;
+		delete camioneta;
+		delete combi;
 	}
 	else
-	{
+	{//Hacer una excepcion
 		cout << "Este vehiculo esta en buen estado." << endl;//si esta en buen estado no necesia mantenimiento
 	}
-
-
 }
 //creamos un alquiler en la empresa
 void cEmpresa::Alquiler( string dni, string patente, int adicional1, int adicional2, string inicioreserva, string finalreserva)
@@ -73,6 +75,10 @@ void cEmpresa::Alquiler( string dni, string patente, int adicional1, int adicion
 			vehiculo->setAlquilado();//Le cambiamos el estado al vehiculo, esta alquilado ahora
 			destruccion = 10 + rand() % 91;//Hacemos un nivel de desctruccion aleatorio entre 10 y 100
 			vehiculo->setEstado(destruccion);
+		}
+		else
+		{
+			//hacer excepcion
 		}
 }
 

@@ -12,8 +12,11 @@ private:
 public:
     cAlquileres();
     ~cAlquileres();
-    int CalcularGananciaTotal();
-    cAlquileres* OrdenarPorTipoVehiculo(string tipo_vehiculo);
-    void ListarPorTipoVehiculo(cAlquileres* alquileres);
+    void CalcularGananciaTotal();
+    cAlquileres OrdenarPorTipoVehiculo();
+    void ListarPorTipoVehiculo();
+    string to_stringAlquileres();
+    void imprimirAlquileres();
+
 };
 

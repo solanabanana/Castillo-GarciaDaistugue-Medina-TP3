@@ -25,7 +25,10 @@ public:
 	//sobrecarga de operadores
 	void operator+(T* objeto)
 	{
-		lista.AgregarObjeto(objeto);
+		try {
+			lista.AgregarObjeto(objeto);
+		}
+		catch()
 	};
 	T* operator[](string clave)
 	{

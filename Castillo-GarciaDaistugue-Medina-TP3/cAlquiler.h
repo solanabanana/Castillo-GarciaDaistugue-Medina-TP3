@@ -1,5 +1,8 @@
 #pragma once
-#include "cVehiculo.h"
+#include "cMoto.h"
+#include "cAuto.h"
+#include "cCamioneta.h"
+#include "cCombi.h"
 #include "cCliente.h"
 #include "cFecha.h"
 using namespace std;
@@ -21,7 +24,13 @@ public:
 	int CalcularDiasReserva();
 	void setInicio(string fecha);
 	void setFinal(string fecha);
-	string to_string();
+	//-------Verifica el tipo de vehiculo---------//
+	bool EsMoto();
+	bool EsAuto();
+	bool EsCamioneta();
+	bool EsCombi();
+
+	string to_stringAlquiler();
 	void imprimirAlquiler();
 };
 

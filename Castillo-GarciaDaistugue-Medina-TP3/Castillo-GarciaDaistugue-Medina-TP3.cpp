@@ -46,7 +46,7 @@ int main()
     empresa->Alquiler("20685689", "789", 1, 0, "23/5/2021", "29/5/2021");
     empresa->Alquiler("35421578", "101", 1, 1, "15/5/2021", "21/6/2021");
     empresa->Alquiler("30912586", "111", 0, 3, "21/5/2021", "30/5/2021");
-    int total = alquileres.CalcularGananciaTotal();
+    alquileres.CalcularGananciaTotal();
     empresa->RealizarMantenimiento("123");
     empresa->RealizarMantenimiento("456");
     empresa->RealizarMantenimiento("789");
