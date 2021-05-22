@@ -23,3 +23,18 @@ public:
 	void ImprimirCliente();
 };
 
+string cCliente::to_stringCliente()
+{
+	stringstream ss;
+	ss << "Cliente" << Nombre << endl;;
+	ss << "Vehiculo: " << Apellido << endl;;
+	ss << "Adicional: " << DNI << endl;
+	return ss.str();
+}
+
+void cCliente::ImprimirCliente()
+{
+	string imprimir2 = to_stringCliente();
+	cout << ImprimirCliente();
+
+}
