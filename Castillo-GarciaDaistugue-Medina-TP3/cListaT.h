@@ -36,6 +36,9 @@ public:
 		if (pos < CA) return lista[pos];
 	}
 };
+template<class T>
+void cListaT<T>::AgregarObjeto(T* objeto)
+{
 
 }
 template<class T>
