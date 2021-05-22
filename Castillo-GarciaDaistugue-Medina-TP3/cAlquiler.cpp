@@ -164,18 +164,18 @@ void cAlquiler::setFinal(string fecha)
 string cAlquiler::to_stringAlquiler()
 {
 	stringstream ss;
-	ss << "Cliente" << Cliente->//-----() << endl;;
-	//ss << "Vehiculo: " << Vehiculo-> << endl;;
+	ss << "Cliente" << Cliente->to_strigCliente() << endl;;
+	ss << "Vehiculo: " << Vehiculo << endl;;
 	ss << "Adicional: " << Adicional1 << endl;
 	ss << "Adicional: " << Adicional2 << endl;;
-	//ss << "Inicio de incio de reserva del vehiculo: " << InicioReserva->//to_stringfecha() << endl;
-	//ss << "Final de incio de reserva del vehiculo: " << FinalReserva->//to_stringfecha() << endl;
+	ss << "Inicio de incio de reserva del vehiculo: " << InicioReserva->to_stringfecha() << endl;
+	ss << "Final de incio de reserva del vehiculo: " << FinalReserva->to_stringfecha() << endl;
 	ss << "Monto total: " << Monto_Total() << endl;
 	return ss.str();
 }
 
 void cAlquiler::imprimirAlquiler()
 {
-	//ss imprimir2 = to_stringAlquiler();
+	ss imprimir2 = to_stringAlquiler();
 	cout << imprimirAlquiler;
 }
