@@ -4,7 +4,7 @@
 #include "cCamioneta.h"
 #include "cCombi.h"
 
-#define NMAX 20
+
 
 //contructor
 cEmpresa::cEmpresa(cListaT<cVehiculo> Vehiculos, cListaT<cCliente> Clientes, cAlquileres Alquileres)
@@ -53,8 +53,8 @@ void cEmpresa::RealizarMantenimiento(string clave)//Recibe la patente del auto
 		delete combi;
 	}
 	else
-	{//Hacer una excepcion
-		cout << "Este vehiculo esta en buen estado." << endl;//si esta en buen estado no necesia mantenimiento
+	{
+		throw new exception("Este vehiculo esta en buen estado.");//si esta en buen estado no necesia mantenimiento
 	}
 }
 //creamos un alquiler en la empresa
@@ -78,7 +78,7 @@ void cEmpresa::Alquiler( string dni, string patente, int adicional1, int adicion
 		}
 		else
 		{
-			//hacer excepcion
+			throw new exception("No se pudo alquilar, el vehiculo ya estaba alquilado");
 		}
 }
 

@@ -147,7 +147,6 @@
     <ClCompile Include="cCamioneta.cpp" />
     <ClCompile Include="cCombi.cpp" />
     <ClCompile Include="cEmpresa.cpp" />
-    <ClCompile Include="cListaT.cpp" />
     <ClCompile Include="cMoto.cpp" />
     <ClCompile Include="cVehiculo.cpp" />
   </ItemGroup>
