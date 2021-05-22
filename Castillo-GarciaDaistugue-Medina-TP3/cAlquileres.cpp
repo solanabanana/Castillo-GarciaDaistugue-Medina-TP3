@@ -2,7 +2,7 @@
 
 cAlquileres::cAlquileres()
 {
-
+	GananciaTotal = 0;
 }
 
 cAlquileres::~cAlquileres()
