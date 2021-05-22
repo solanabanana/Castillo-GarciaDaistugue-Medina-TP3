@@ -40,18 +40,84 @@ int main()
     cliente = new cCliente("Bianca", "Del Rio", "30912586");
     lista_clientes + cliente;
     cAlquileres alquileres;
+    //Nos creamos una empresa con la lista de vehiculos, la lista de clientes y una lista de alquileres
     cEmpresa* empresa = new cEmpresa(lista_vehiculos, lista_clientes, alquileres);
-    empresa->Alquiler("42116766", "123", 1, 0, "20/5/2021", "31/5/2021");
-    empresa->Alquiler("42156988", "456", 2, 0, "30/5/2021", "8/6/2021");
-    empresa->Alquiler("20685689", "789", 1, 0, "23/5/2021", "29/5/2021");
-    empresa->Alquiler("35421578", "101", 1, 1, "15/5/2021", "21/6/2021");
-    empresa->Alquiler("30912586", "111", 0, 3, "21/5/2021", "30/5/2021");
-    alquileres.CalcularGananciaTotal();
-    empresa->RealizarMantenimiento("123");
-    empresa->RealizarMantenimiento("456");
-    empresa->RealizarMantenimiento("789");
-    empresa->RealizarMantenimiento("101");
-    empresa->RealizarMantenimiento("111");
-    //HACER LOS TRY-CATCHHHHHHH
+    //Realizamos los alquileres, si el vehiculo ya esta alquilado, nos tira una excepcion y la imprimimos
+    try
+    {
+        empresa->Alquiler("42116766", "123", 1, 0, "20/5/2021", "31/5/2021");
+    }
+    catch (exception* e) { 
+        cout << e->what() << endl;
+        delete e;
+    }
+    try
+    {
+        empresa->Alquiler("42156988", "456", 2, 0, "30/5/2021", "8/6/2021");
+    }
+    catch (exception* e){
+        cout << e->what() << endl;
+        delete e;
+    }
+    try
+    {
+        empresa->Alquiler("20685689", "789", 1, 0, "23/5/2021", "29/5/2021");
+    } 
+    catch (exception* e) {
+        cout << e->what() << endl;
+    }
+    try
+    {
+        empresa->Alquiler("35421578", "101", 1, 1, "15/5/2021", "21/6/2021");
+    }
+    catch (exception* e) {
+        cout << e->what() << endl;
+    }
+    try
+    {
+        empresa->Alquiler("30912586", "111", 0, 3, "21/5/2021", "30/5/2021");
+    } 
+    catch (exception* e) {
+        cout << e->what() << endl;
+    }
+    alquileres.CalcularGananciaTotal();//Calculamos la ganancia total de los alquileres que se pudieron hacer
+    //Como realizar mantenimiento nos tira una excepcion, se debe hacer un try-catch para cada llamado a este método.
+    //Imrpimimos la excepcion
+    try
+    {
+        empresa->RealizarMantenimiento("123");
+    }
+    catch (exception* e) {
+        cout << e->what() << endl;
+    }
+    try
+    {
+        empresa->RealizarMantenimiento("456");
+    }
+    catch (exception* e) {
+        cout << e->what() << endl;
+    }
+    try
+    {
+        empresa->RealizarMantenimiento("789");
+    }
+    catch (exception* e) {
+        cout << e->what() << endl;
+    }
+    try
+    {
+        empresa->RealizarMantenimiento("101");
+    }
+    catch (exception* e) {
+        cout << e->what() << endl;
+    }
+    try
+    {
+        empresa->RealizarMantenimiento("111");
+    }
+    catch (exception* e) {
+        cout << e->what() << endl;
+    }
+    alquileres.imprimirAlquileres();//Vemos q onda los alquileres
 }
 

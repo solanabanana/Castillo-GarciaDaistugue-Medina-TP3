@@ -65,12 +65,12 @@ void cAlquiler::setInicio(string fecha)
 	int init = 0;
 	int end = 0;
 	end = fecha.find("/", init);
-	dia.substr(init, end - init);
+	dia = fecha.substr(init, end - init);
 	init = end + 1;
 	end = fecha.find("/", init);
-	mes.substr(init, end - init);
+	mes = fecha.substr(init, end - init);
 	init = end + 1;
-	anio.substr(init, sizeof(fecha) - init);
+	anio = fecha.substr(init, sizeof(fecha) - init);
 	InicioReserva->setFecha(stoi(dia), stoi(mes), stoi(anio));
 
 }
@@ -81,12 +81,12 @@ void cAlquiler::setFinal(string fecha)
 	int init = 0;
 	int end = 0;
 	end = fecha.find("/", init);
-	dia.substr(init, end - init);
+	dia = fecha.substr(init, end - init);
 	init = end + 1;
 	end = fecha.find("/", init);
-	mes.substr(init, end - init);
+	mes = fecha.substr(init, end - init);
 	init = end + 1;
-	anio.substr(init, sizeof(fecha) - init);
+	fecha = anio.substr(init, sizeof(fecha) - init);
 	FinalReserva->setFecha(stoi(dia), stoi(mes), stoi(anio));
 }
 bool cAlquiler::EsMoto()
@@ -171,6 +171,6 @@ string cAlquiler::to_stringAlquiler()
 void cAlquiler::imprimirAlquiler()
 {
 	string imprimir2 = to_stringAlquiler();
-	cout << imprimirAlquiler;
+	cout << imprimir2;
 
 }

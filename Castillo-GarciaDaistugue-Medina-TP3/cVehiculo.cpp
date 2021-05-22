@@ -13,9 +13,9 @@ string cVehiculo::getClave()
 {
 	return to_string(Npatente);
 }
-int cVehiculo::setEstado(int nivel)
+void cVehiculo::setEstado(int nivel)
 {
-	Estado = nivel;
+	Estado = Estado - nivel;
 }
 int cVehiculo::getEstado()
 {

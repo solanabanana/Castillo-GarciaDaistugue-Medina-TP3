@@ -30,7 +30,7 @@ public:
 	friend ostream& operator<<(ostream& os, const cVehiculo& vehiculo);
 	virtual int CalcularTarifa(int dias, int adicional1, int adicional2) const = 0;
 	string getClave();
-	int setEstado(int nivel);
+	void setEstado(int nivel);
 	int getEstado();
 	void setMantenimiento();
 	bool getAlquilado();

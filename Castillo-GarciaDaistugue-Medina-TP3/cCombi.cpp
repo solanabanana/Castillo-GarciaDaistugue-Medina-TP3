@@ -17,6 +17,7 @@ int cCombi::CalcularTarifa(int dias, int adicional1, int adicional2) const
 	int total = 0;
 	total = TarifaBase + AlquilerxDia * dias;//Calculamos la tarifa base
 	total += dias * (SillaSeguridad->getPrecio() * adicional1 + AsientoRebatible->getPrecio() * adicional2);
+	return total;
 }
 
 void cCombi::PasosMantenimiento() const
