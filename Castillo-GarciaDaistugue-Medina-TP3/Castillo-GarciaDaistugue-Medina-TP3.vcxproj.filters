@@ -42,9 +42,6 @@
     <ClCompile Include="cAlquileres.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cListaT.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cEmpresa.h">
