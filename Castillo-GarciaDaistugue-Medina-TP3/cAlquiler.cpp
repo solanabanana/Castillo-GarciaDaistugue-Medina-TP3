@@ -6,28 +6,34 @@ cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo, int adicional1, int
 	Vehiculo = vehiculo;
 	Adicional1 = adicional1;
 	Adicional2 = adicional2;
+	InicioReserva = new cFecha();
+	FinalReserva = new cFecha();
 	MontoTotal = 0;
 }
 
 cAlquiler::~cAlquiler()
 {
+	if (Cliente != NULL) delete Cliente;
+	if (Vehiculo != NULL) delete Vehiculo;
+	if (InicioReserva != NULL) delete InicioReserva;
+	if (FinalReserva != NULL) delete FinalReserva;
 }
 
 int cAlquiler::CalcularMontoTotal()
 {
 	int var_diasAlquiler, tarifa = 0;
 	var_diasAlquiler = CalcularDiasReserva();
-	//----------------------------------------------------------------------------
+	////----------------------------------------------------------------------------
 	if (EsMoto())
 	{
-		cMoto* aux = dynamic_cast<cMoto*> (Vehiculo);
-		tarifa = aux->CalcularTarifa(var_diasAlquiler, Adicional1, Adicional2);
+		cMoto* moto = dynamic_cast<cMoto*>(Vehiculo);
+		tarifa = moto->CalcularTarifa(var_diasAlquiler, Adicional1, Adicional2);
 
 	}
 	if (EsAuto())
 	{
-		cAuto* p_auto = dynamic_cast<cAuto*> (Vehiculo);
-		tarifa = p_auto->CalcularTarifa(var_diasAlquiler, Adicional1, Adicional2);
+		cAuto* automovil = dynamic_cast<cAuto*>(Vehiculo);
+		tarifa = automovil->CalcularTarifa(var_diasAlquiler, Adicional1, Adicional2);
 	}
 	if (EsCamioneta())
 	{
@@ -41,7 +47,7 @@ int cAlquiler::CalcularMontoTotal()
 	}
 	//----------------------------------------------------------------------------------------------
 
-
+	MontoTotal = tarifa;
 	return tarifa;
 
 }
@@ -86,8 +92,16 @@ void cAlquiler::setFinal(string fecha)
 	end = fecha.find("/", init);
 	mes = fecha.substr(init, end - init);
 	init = end + 1;
-	fecha = anio.substr(init, sizeof(fecha) - init);
+	anio = fecha.substr(init, sizeof(fecha) - init);
 	FinalReserva->setFecha(stoi(dia), stoi(mes), stoi(anio));
+}
+string cAlquiler::getPatente()
+{
+	return Vehiculo->getClave();
+}
+string cAlquiler::getClienteDNI()
+{
+	return Cliente->getClave();
 }
 bool cAlquiler::EsMoto()
 {
@@ -98,11 +112,7 @@ bool cAlquiler::EsMoto()
 	{
 		bool_Moto = true;
 	}
-
-	bool_Moto = false;
-
-	delete moto;
-
+	else bool_Moto = false;
 	return bool_Moto;
 }
 
@@ -114,12 +124,7 @@ bool cAlquiler::EsAuto()
 	if (Auto != NULL)
 	{
 		bool_Auto = true;
-	}
-
-	bool_Auto = false;
-
-	delete Auto;
-
+	} else bool_Auto = false;
 	return bool_Auto;
 }
 
@@ -131,11 +136,7 @@ bool cAlquiler::EsCamioneta()
 	if (Camioneta != NULL)
 	{
 		bool_Camioneta = true;
-	}
-	bool_Camioneta = false;
-
-	delete Camioneta;
-
+	} else bool_Camioneta = false;
 	return bool_Camioneta;
 }
 
@@ -147,23 +148,19 @@ bool cAlquiler::EsCombi()
 	if (Combi != NULL)
 	{
 		bool_Combi = true;
-	}
-
-	bool_Combi = false;
-
-	delete Combi;
-
+	} else bool_Combi = false;
 	return bool_Combi;
 }
 
 string cAlquiler::to_stringAlquiler()
 {
 	stringstream ss;
-	ss << "Cliente" << Cliente->to_stringCliente() << endl;;
-	ss << "Vehiculo: " << Vehiculo << endl;;
-	ss << "Inicio de incio de reserva del vehiculo: " << InicioReserva->to_stringFecha();
+
+	ss << Cliente->to_stringCliente() << endl;
+	ss << "Vehiculo: " << Vehiculo << endl;
+	ss << "Inicio de incio de reserva del vehiculo: " << InicioReserva->to_stringFecha() << endl;
 	ss << "Final de incio de reserva del vehiculo: " << FinalReserva->to_stringFecha() << endl;
-	ss << "Monto total: " << CalcularMontoTotal() << endl;
+	ss << "Monto total: " << MontoTotal << endl;
 	return ss.str();
 
 }

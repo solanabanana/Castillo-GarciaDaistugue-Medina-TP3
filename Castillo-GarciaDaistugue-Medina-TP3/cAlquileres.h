@@ -13,7 +13,7 @@ public:
     cAlquileres();
     ~cAlquileres();
     void CalcularGananciaTotal();
-    cAlquileres OrdenarPorTipoVehiculo();
+    void OrdenarPorTipoVehiculo(cAlquileres& aux );
     void ListarPorTipoVehiculo();
     string to_stringAlquileres();
     void imprimirAlquileres();

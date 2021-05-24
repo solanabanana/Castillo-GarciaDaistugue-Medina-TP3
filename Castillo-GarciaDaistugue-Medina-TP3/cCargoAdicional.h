@@ -18,5 +18,6 @@ public:
 		this->Precio = precio;
 	}
 	int getPrecio() { return Precio; };
+	~cCargoAdicional() {};
 };
 

@@ -1,61 +1,33 @@
 #include "cEmpresa.h"
-#include "cMoto.h"
-#include "cAuto.h"
-#include "cCamioneta.h"
-#include "cCombi.h"
-
 
 
 //contructor
-cEmpresa::cEmpresa(cListaT<cVehiculo> Vehiculos, cListaT<cCliente> Clientes, cAlquileres Alquileres)
+cEmpresa::cEmpresa(cListaT<cVehiculo>& Vehiculos, cListaT<cCliente>& Clientes, cAlquileres& Alquileres)
 {
-	this->vehiculos =  Vehiculos ;
-	this->clientes = Clientes;
-	this->alquileres = Alquileres;
+	vehiculos =  Vehiculos ;
+	clientes = Clientes;
+	alquileres = Alquileres;
+}
+cEmpresa::~cEmpresa()
+{
 }
 //metodos
 void cEmpresa::RealizarMantenimiento(string clave)//Recibe la patente del auto
 {
-
-	if (vehiculos[clave]->getEstado() < 75)//si esta en un mal estado
-
-	if (vehiculos[clave]->getEstado() < 75 && vehiculos[clave]->getAlquilado() == true)//Si el estado del vehiculo es menor del 75%
-
+	if (vehiculos[clave]->getAlquilado() == false)
 	{
-		cMoto* moto = dynamic_cast<cMoto*>(vehiculos[clave]);
-		cAuto* automovil = dynamic_cast<cAuto*>(vehiculos[clave]);
-		cCamioneta* camioneta = dynamic_cast<cCamioneta*>(vehiculos[clave]);
-		cCombi* combi = dynamic_cast<cCombi*>(vehiculos[clave]);
-		//realizamos mantenimiento actualizando la fecha
-		if (moto != NULL)
+		if (vehiculos[clave]->getEstado() < 75)//si esta en un mal estado
 		{
-			moto->PasosMantenimiento();
-			moto->setMantenimiento();
+			vehiculos[clave]->PasosMantenimiento();
+			vehiculos[clave]->setMantenimiento();
+			vehiculos[clave]->setEstado(100);
 		}
-		if (automovil != NULL)
+		else
 		{
-			automovil->PasosMantenimiento();
-			automovil->setMantenimiento();
+			throw new exception("Este vehiculo esta en buen estado.");//si esta en buen estado no necesita mantenimiento
 		}
-		if (camioneta != NULL)
-		{
-			camioneta->PasosMantenimiento();
-			camioneta->setMantenimiento();
-		}
-		if (combi != NULL)
-		{
-			combi->PasosMantenimiento();
-			combi->setMantenimiento();
-		}
-		delete moto;
-		delete automovil;
-		delete camioneta;
-		delete combi;
 	}
-	else
-	{
-		throw new exception("Este vehiculo esta en buen estado.");//si esta en buen estado no necesia mantenimiento
-	}
+	else throw new exception("Este vehiculo esta alquilado, no se puede realizar su mantenimiento");
 }
 //creamos un alquiler en la empresa
 void cEmpresa::Alquiler( string dni, string patente, int adicional1, int adicional2, string inicioreserva, string finalreserva)
@@ -74,11 +46,42 @@ void cEmpresa::Alquiler( string dni, string patente, int adicional1, int adicion
 			alquileres + alquiler;//Lo agregamos a las lista de alquileres
 			vehiculo->setAlquilado();//Le cambiamos el estado al vehiculo, esta alquilado ahora
 			destruccion = 10 + rand() % 91;//Hacemos un nivel de desctruccion aleatorio entre 10 y 100
-			vehiculo->setEstado(destruccion);
+			vehiculo->setEstado(100 - destruccion);
 		}
 		else
 		{
 			throw new exception("No se pudo alquilar, el vehiculo ya estaba alquilado");
 		}
+}
+
+void cEmpresa::CalcularGananciaTotal()
+{
+	alquileres.CalcularGananciaTotal();
+}
+
+void cEmpresa::ImprimirAlquileres()
+{
+	alquileres.imprimirAlquileres();
+}
+
+void cEmpresa::ImprimirAlquileresOrdenados()
+{
+	alquileres.ListarPorTipoVehiculo();
+}
+
+void cEmpresa::EntregaDeVehiculo(string patente)
+{
+	//Aca simulamos la entrega de un vehiculo que estaba alquilado, podríamos quitamos al cliente
+	//que alquilo al vehiculo con la patente recibida de la lista de clientes.
+	vehiculos[patente]->setAlquilado();//Liberamos el vehiculo
+	string DNI;
+	for (unsigned int i = 0; i < alquileres.CA; ++i)
+	{
+		if (alquileres[i]->getPatente() == patente)
+		{
+			DNI = alquileres[i]->getClienteDNI();
+		}
+	}
+	clientes.QuitarObjeto(DNI);//Quitamos al cliente de la lista
 }
 

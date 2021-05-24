@@ -6,7 +6,7 @@ cMoto::cMoto(int estado, int npatente, int nchasis, int npoliza, int tarifabase,
 	Casco = new cCargoAdicional(eCargoAdicional::CASCO, 100);//Creamos el cargo adicional casco
 }
 
-cMoto::~cMoto() { if(Casco != NULL) delete Casco; }//Se llama al destructor de cVehiculo aca?
+cMoto::~cMoto() { if (Casco != NULL) delete Casco; }
 
 int cMoto::CalcularTarifa(int dias, int adicional1, int adicional2) const
 {
@@ -35,3 +35,4 @@ void cMoto::PasosMantenimiento() const
 	string s = ss.str();
 	cout << s;
 }
+

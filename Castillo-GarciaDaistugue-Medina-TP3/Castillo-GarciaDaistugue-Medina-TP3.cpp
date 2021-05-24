@@ -1,19 +1,16 @@
 #include "cEmpresa.h"
-#include "cAuto.h"
-#include "cCombi.h"
-#include "cCamioneta.h"
-#include "cMoto.h"
-#include "cAlquileres.h"
 #include <iostream>
-
+#include "cVehiculo.h"
+#include "cListaT.h"
 int main()
 {
     //Nos creamos una lista de vehiculos y le agregamos algunos vehiculos
     cListaT<cVehiculo> lista_vehiculos;
+    cListaT<cCliente> lista_clientes;
+    cAlquileres alquileres;
     cVehiculo* nuevo;
     nuevo = new cMoto(100, 123, 987, 12345, 500, 2, "Negro");
     lista_vehiculos + nuevo;
-    //cout << "Primer vehiculo que creamos: " << nuevo;//Probamos el operator <<
     nuevo = new cMoto(100, 456, 654, 6789, 500, 1, "Rosa");
     lista_vehiculos + nuevo;
     nuevo = new cAuto(100, 789, 321, 1357, 700, 5, "Rojo");
@@ -22,12 +19,11 @@ int main()
     lista_vehiculos + nuevo;
     nuevo = new cCombi(100, 111, 654, 1928, 1000, 12, "Violeta");
     lista_vehiculos + nuevo;
-    for (int i = 0; i < 4; ++i)//Probamos el operator <<
+    for (int i = 0; i < 5; ++i)//Probamos el operator <<
     {
-        cout << "Vehiculo " << to_string(i + 1) << ": " << lista_vehiculos[i];
+        cout << "Vehiculo " << to_string(i + 1) << ": " << lista_vehiculos[i] << endl;
     }
     //Nos creamos una lista de clientes y le agregamos clientes
-    cListaT<cCliente> lista_clientes;
     cCliente* cliente;
     cliente = new cCliente("Solana", "Castillo", "42116766");
     lista_clientes + cliente;
@@ -39,13 +35,13 @@ int main()
     lista_clientes + cliente;
     cliente = new cCliente("Bianca", "Del Rio", "30912586");
     lista_clientes + cliente;
-    cAlquileres alquileres;
     //Nos creamos una empresa con la lista de vehiculos, la lista de clientes y una lista de alquileres
     cEmpresa* empresa = new cEmpresa(lista_vehiculos, lista_clientes, alquileres);
     //Realizamos los alquileres, si el vehiculo ya esta alquilado, nos tira una excepcion y la imprimimos
     try
     {
         empresa->Alquiler("42116766", "123", 1, 0, "20/5/2021", "31/5/2021");
+        //alquileres.CA++;
     }
     catch (exception* e) { 
         cout << e->what() << endl;
@@ -80,9 +76,21 @@ int main()
     catch (exception* e) {
         cout << e->what() << endl;
     }
-    alquileres.CalcularGananciaTotal();//Calculamos la ganancia total de los alquileres que se pudieron hacer
-    //Como realizar mantenimiento nos tira una excepcion, se debe hacer un try-catch para cada llamado a este método.
-    //Imrpimimos la excepcion
+    try//Intentamos alquilar un vehiculo que ya esta alquilado
+    {
+        empresa->Alquiler("42116766", "111", 2, 2, "1/7/2021", "27/7/2021");
+    }
+    catch (exception* e) {
+        cout << e->what() << endl;
+    }
+    //Entregamos algunos de los vehiculos que estaban alquilados
+    empresa->EntregaDeVehiculo("123");
+    empresa->EntregaDeVehiculo("456");
+    empresa->EntregaDeVehiculo("789");
+    empresa->CalcularGananciaTotal();
+    //Calculamos la ganancia total de los alquileres que se pudieron hacer
+    //Como RealizarMantenimiento nos tira una excepcion si el vehiculo esta en buen estado y si esta alquilado, se debe hacer un try-catch para cada llamado a este método.
+    //Imprimimos la excepcion
     try
     {
         empresa->RealizarMantenimiento("123");
@@ -118,6 +126,7 @@ int main()
     catch (exception* e) {
         cout << e->what() << endl;
     }
-    alquileres.imprimirAlquileres();//Vemos q onda los alquileres
+   empresa->ImprimirAlquileres();//Vemos q onda los alquileres
+   empresa->ImprimirAlquileresOrdenados();
 }
 

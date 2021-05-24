@@ -19,21 +19,32 @@ protected://Atributos y métodos protegidos para que las clases hijas puedan acce
 	string Color;
 	cFecha* UltimoMantenimiento;
 	bool Alquilado;
-	
+
 	//virtual int CalcularCargosAdicionales(int dias, int* cantadicionales) const = 0;
-	virtual void PasosMantenimiento() const = 0;
+	
 
 
 public: 
 	cVehiculo(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color);
-	~cVehiculo();
-	friend ostream& operator<<(ostream& os, const cVehiculo& vehiculo);
+	virtual ~cVehiculo(void){};
 	virtual int CalcularTarifa(int dias, int adicional1, int adicional2) const = 0;
-	string getClave();
-	void setEstado(int nivel);
-	int getEstado();
+	string getClave() const;
+	void setEstado(int nuevo);
+	int getEstado() const;
+	virtual void PasosMantenimiento() const = 0;
 	void setMantenimiento();
-	bool getAlquilado();
+	bool getAlquilado() const;
 	void setAlquilado();
+	string getChasis() const;
+	string getPoliza() const;
+	string getTarifaBase() const;
+	string getCapacidadPasajeros() const;
+	string getColor() const;
+	string getUltimoMantenimiento() const;
+
+	/*string  to_stringVehiculo() const;
+	void ImprimirVehiculo() const;*/
 };
+ostream& operator<<(ostream& os, const cVehiculo* vehiculo);
+
 

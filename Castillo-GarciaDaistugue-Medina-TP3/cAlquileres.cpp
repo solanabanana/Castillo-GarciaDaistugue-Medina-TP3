@@ -7,6 +7,7 @@ cAlquileres::cAlquileres()
 
 cAlquileres::~cAlquileres()
 {
+	
 }
 
 void cAlquileres::CalcularGananciaTotal()
@@ -17,9 +18,8 @@ void cAlquileres::CalcularGananciaTotal()
 	}
 }
 
-cAlquileres cAlquileres::OrdenarPorTipoVehiculo()
+void cAlquileres::OrdenarPorTipoVehiculo(cAlquileres& aux)
 {
-	cAlquileres aux;
 	for (unsigned int i = 0; i < CA; i++)
 	{
 		if (lista[i]->EsMoto())
@@ -56,12 +56,12 @@ cAlquileres cAlquileres::OrdenarPorTipoVehiculo()
 
 		}
 	}
-	return aux;
 }
 
 void cAlquileres::ListarPorTipoVehiculo()
 {
-	cAlquileres aux = OrdenarPorTipoVehiculo();
+	cAlquileres aux;
+	OrdenarPorTipoVehiculo(aux);
 	for (unsigned int i = 0; i < CA; ++i)
 	{
 		aux[i]->imprimirAlquiler();

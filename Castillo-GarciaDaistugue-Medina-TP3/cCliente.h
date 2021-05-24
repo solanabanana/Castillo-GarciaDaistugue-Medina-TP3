@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <sstream>
 #include <string>
 using namespace std;
@@ -16,25 +17,24 @@ public:
 		this->Apellido = apellido;
 		this->DNI = DNI;
 	}
-	~cCliente(){}
+	~cCliente() {};
 	//getter 
 	string getClave() { return DNI; }
 	string to_stringCliente();
 	void ImprimirCliente();
 };
 
-string cCliente::to_stringCliente()
+inline string cCliente::to_stringCliente()
 {
 	stringstream ss;
-	ss << "Cliente" << Nombre << endl;;
-	ss << "Vehiculo: " << Apellido << endl;;
-	ss << "Adicional: " << DNI << endl;
+	ss << "Cliente: " << Nombre << ", " << Apellido << endl;
+	ss << "DNI: " << DNI << endl;
 	return ss.str();
 }
 
-void cCliente::ImprimirCliente()
+inline void cCliente::ImprimirCliente()
 {
 	string imprimir2 = to_stringCliente();
-	cout << ImprimirCliente();
+	cout << imprimir2;
 
 }

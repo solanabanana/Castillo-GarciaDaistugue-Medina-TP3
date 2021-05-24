@@ -31,3 +31,4 @@ void cAuto::PasosMantenimiento() const
 	string s = ss.str();
 	cout << s;
 }
+

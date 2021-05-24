@@ -1,5 +1,8 @@
 #pragma once
 #include <string>
+#include <exception>
+#include <stdio.h>
+#include <iostream>
 #define NMAX 100
 
 using namespace std;
@@ -11,36 +14,25 @@ public:
 //atributos
 	T** lista;
 	unsigned int CA, TAM;
-	bool Eliminar_objetos;
+	bool EliminarObjetos;
 	
 	//contructor y destructor
-	cListaT(int TAM = NMAX);
-	~cListaT();
+	cListaT(unsigned int TAM = NMAX);
+	~cListaT(void);
 	//metodos de la lista
 	void AgregarObjeto(T* objeto);
-	void Redimensionalizar();
-	T* QuitarObjeto();
-	void EliminarObjeto();
+	void Redimensionar();
+	T* QuitarObjeto(string clave);
+	void EliminarObjeto(string clave);
 	int BuscarObjetoPos(string clave);
 	T* BuscarObjeto(string clave);
 	//sobrecarga de operadores
-	void operator+(T* objeto)
-	{
-		try {
-			lista.AgregarObjeto(objeto);
-		}
-		catch (exception* e) {
-
-			Redimensionalizar();
-		}
-
-		
-	};
+	void operator+(T* objeto);
 	T* operator[](string clave)
 	{
 		return BuscarObjeto(clave);
 	}
-	T* operator[](int pos)
+	T* operator[](unsigned int pos)
 	{
 		if (pos < CA) return lista[pos];
 	}
@@ -51,28 +43,24 @@ public:
 
 //constructor 
 template<class T>
-cListaT<T>::cListaT(int TAM)
+inline cListaT<T>::cListaT(unsigned int TAM)
 {
-	Eliminar_objetos = false;//por defaullt
-	this->CA = ca;
-
-	if (ca == TAM)//si no hay mas espacio
+	CA = 0;
+	lista = new T * [TAM];
+	for (unsigned int i = 0; i < TAM; i++)
 	{
-		cout << "No se puede crear" << endl;
+		lista[i] = NULL;
 	}
-	else {
-		for (int i = 0; i < T; i++)
-		{
-			lista[i] = NULL;//creo y apunto a null
-		}
-	}
+
+	this->TAM = TAM;
+	EliminarObjetos = false;
 
 }
 template<class T>
-cListaT<T>::~cListaT()
+inline cListaT<T>::~cListaT(void)
 {//borro memoria
-	if (lista != NULL) {
-		for (int i = 0; i < ca; i++)
+	if (lista != NULL && EliminarObjetos == true) {
+		for (unsigned int i = 0; i < CA; i++)
 		{
 			if (lista[i] != NULL)
 				delete lista[i];
@@ -82,7 +70,7 @@ cListaT<T>::~cListaT()
 }
 
 template<class T>
-void cListaT<T>::AgregarObjeto(T* objeto)
+inline void cListaT<T>::AgregarObjeto(T* objeto)
 {
 	if (CA < TAM)
 	{
@@ -93,22 +81,37 @@ void cListaT<T>::AgregarObjeto(T* objeto)
 		throw new exception("No se pueden agregar mas elementos a la lista");
 	}
 }
-
 template<class T>
-void cListaT<T>::Redimensionalizar()
+inline void cListaT<T>::operator+(T* objeto)
 {
-	lista = new cListaT * [2 * TAM];
-	for (int i = CA; i < 2 * TAM; i++)
+		try {
+			AgregarObjeto(objeto);
+		}
+		catch (exception* e) {//Si no hay mas lugar en la lista, lo imprimimos y la redimensionalizamos
+			cout << e->what() << endl;
+			delete e;
+			Redimensionar();
+		}
+}
+template<class T>
+inline void cListaT<T>::Redimensionar()
+{
+	TAM = TAM * 2;//Duplicamos el tamaño
+	T** aux = new T * [TAM];//Nos creamos un doble puntero con este nuevo tamaño
+	for (unsigned int i = 0; i < TAM / 2; i++)
 	{
-		lista[i] = NULL;
+		aux[i] = lista[i];//Copiamos los datos del array original a este auxliar
 	}
+	lista = aux;//Cambiamos la dirección del doble puntero original por la del auxiliar. 
 }
 
 
+
 template<class T>
-T* cListaT<T>::QuitarObjeto()
+inline T* cListaT<T>::QuitarObjeto(string clave)
 {
 	T* aux = BuscarObjeto(clave);
+	int i = BuscarObjetoPos(clave);
 	for (int k = i; k < CA - 1; k++)
 	{
 		lista[k] = lista[k + 1];
@@ -119,18 +122,18 @@ T* cListaT<T>::QuitarObjeto()
 }
 
 template<class T>
-void cListaT<T>::EliminarObjeto()
+inline void cListaT<T>::EliminarObjeto(string clave)
 {
 
-	T* aux = QuitarObjeto();
+	T* aux = QuitarObjeto(clave);
 	if(aux != NULL)
 		delete aux;
 }
 
 template<class T>
-int cListaT<T>::BuscarObjetoPos(string clave)
+inline int cListaT<T>::BuscarObjetoPos(string clave)
 {
-	for (int i = 0; i < CA; i++)
+	for (unsigned int i = 0; i < CA; i++)
 	{
 		if (lista[i]->getClave() == clave)
 			return i;
@@ -139,10 +142,10 @@ int cListaT<T>::BuscarObjetoPos(string clave)
 }
 
 template<class T>
-T* cListaT<T>::BuscarObjeto(string clave)
+inline T* cListaT<T>::BuscarObjeto(string clave)
 {
-	int pos = BuscarObjetoPos(clave);
-	if (pos < ca)
+	unsigned int pos = BuscarObjetoPos(clave);
+	if (pos < CA)
 		return lista[pos];
 	return NULL;
 }
