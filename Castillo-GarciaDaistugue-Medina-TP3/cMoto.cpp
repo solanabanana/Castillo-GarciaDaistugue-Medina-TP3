@@ -5,7 +5,7 @@ cMoto::cMoto(int estado, int npatente, int nchasis, int npoliza, int tarifabase,
 	AlquilerxDia = 1000;//establecemos el precio del alquiler de unha moto por dia
 	Casco = new cCargoAdicional(eCargoAdicional::CASCO, 100);//Creamos el cargo adicional casco
 }
-
+//destructor
 cMoto::~cMoto() { if (Casco != NULL) delete Casco; }
 
 int cMoto::CalcularTarifa(int dias, int adicional1, int adicional2) const

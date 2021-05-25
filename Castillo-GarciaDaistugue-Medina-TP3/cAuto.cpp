@@ -1,5 +1,5 @@
 #include "cAuto.h"
-
+//constructor y destructor
 cAuto::cAuto(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color) : cVehiculo(estado, npatente, nchasis, npoliza, tarifabase, capacidadpasajeros, color)
 {
 	AlquilerxDia = 1300;
@@ -20,7 +20,7 @@ int cAuto::CalcularTarifa(int dias, int adicional1, int adicional2) const
 }
 
 void cAuto::PasosMantenimiento() const
-{
+{//imprimirmos pasos del mantenimiento
 	stringstream ss;
 	ss << "Pasos del mantenimiento de los autos:" << endl;
 	ss << "1) Triangulo de seguridad. Revisar amortiguadores, frenos y neumaticos" << endl;

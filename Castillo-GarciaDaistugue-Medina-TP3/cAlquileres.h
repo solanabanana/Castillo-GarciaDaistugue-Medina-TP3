@@ -5,13 +5,15 @@
 #include <string>
 using namespace std;
 class cAlquileres :
-    public cListaT<cAlquiler>
+    public cListaT<cAlquiler>//recibe la lista template 
 {
-private:
+private://atributo privado
     int GananciaTotal;
 public:
+    //constructor y destructor
     cAlquileres();
     ~cAlquileres();
+    //metodos 
     void CalcularGananciaTotal();
     void OrdenarPorTipoVehiculo(cAlquileres& aux );
     void ListarPorTipoVehiculo();

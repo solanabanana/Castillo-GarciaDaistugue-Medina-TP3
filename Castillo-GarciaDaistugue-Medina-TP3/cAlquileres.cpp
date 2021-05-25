@@ -1,5 +1,5 @@
 #include "cAlquileres.h"
-
+//constructor y destructor
 cAlquileres::cAlquileres()
 {
 	GananciaTotal = 0;
@@ -9,7 +9,7 @@ cAlquileres::~cAlquileres()
 {
 	
 }
-
+//implementacion de metodos
 void cAlquileres::CalcularGananciaTotal()
 {
 	for (unsigned int i = 0; i < CA; i++)
@@ -19,7 +19,7 @@ void cAlquileres::CalcularGananciaTotal()
 }
 
 void cAlquileres::OrdenarPorTipoVehiculo(cAlquileres& aux)
-{
+{//for que recorran la lista y ordene por tipo de vehiculo
 	for (unsigned int i = 0; i < CA; i++)
 	{
 		if (lista[i]->EsMoto())
@@ -57,7 +57,7 @@ void cAlquileres::OrdenarPorTipoVehiculo(cAlquileres& aux)
 		}
 	}
 }
-
+//listamos 
 void cAlquileres::ListarPorTipoVehiculo()
 {
 	cAlquileres aux;
@@ -67,7 +67,7 @@ void cAlquileres::ListarPorTipoVehiculo()
 		aux[i]->imprimirAlquiler();
 	}
 }
-
+//to string e impmir
 string cAlquileres::to_stringAlquileres()
 {
 	stringstream ss;

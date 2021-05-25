@@ -18,12 +18,12 @@ public:
 		this->DNI = DNI;
 	}
 	~cCliente() {};
-	//getter 
+	//getter , to string e impimir
 	string getClave() { return DNI; }
 	string to_stringCliente();
 	void ImprimirCliente();
 };
-
+//implementacion
 inline string cCliente::to_stringCliente()
 {
 	stringstream ss;

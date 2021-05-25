@@ -3,17 +3,20 @@
 using namespace std;
 class cFecha
 {
-public:
+public://atributos publicos
 	int Dia;
 	int Mes;
 	int Anio;
-	//cFecha(int dia, int mes, int anio);//Revisar las definiciones de variables const pq me olvide como hacerlo
+	//cFecha(int dia, int mes, int anio);
+	//destructor
 	~cFecha() {};
+	//setters y to string e impimir
 	void setFecha(int dia, int mes, int anio);
 	void setMantenimiento();
 	string to_stringFecha();
 	void ImprimirFecha();
 };
+//setter de la fecha
 inline void cFecha::setFecha(int dia, int mes, int anio)
 {
 	Dia = dia;
@@ -28,6 +31,7 @@ inline void cFecha::setMantenimiento()
 	tm* now = localtime(&t);
 	setFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900);
 }
+//to string e impimir 
 inline string cFecha::to_stringFecha()
 {
 	string s = to_string(Dia) + "/" + to_string(Mes) + "/" + to_string(Anio);

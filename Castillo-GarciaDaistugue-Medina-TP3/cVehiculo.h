@@ -25,8 +25,10 @@ protected://Atributos y métodos protegidos para que las clases hijas puedan acce
 
 
 public: 
+	//contrsuctor y destructor
 	cVehiculo(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color);
 	virtual ~cVehiculo(void){};
+	//metodos, getters y setters
 	virtual int CalcularTarifa(int dias, int adicional1, int adicional2) const = 0;
 	string getClave() const;
 	void setEstado(int nuevo);
@@ -45,6 +47,7 @@ public:
 	/*string  to_stringVehiculo() const;
 	void ImprimirVehiculo() const;*/
 };
+//sobrecarga del operador
 ostream& operator<<(ostream& os, const cVehiculo* vehiculo);
 
 

@@ -1,5 +1,5 @@
 #include "cAlquiler.h"
-
+//constructor y destructor 
 cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo, int adicional1, int adicional2)
 {
 	Cliente = cliente;
@@ -23,7 +23,7 @@ int cAlquiler::CalcularMontoTotal()
 {
 	int var_diasAlquiler, tarifa = 0;
 	var_diasAlquiler = CalcularDiasReserva();
-	////----------------------------------------------------------------------------
+	//calculamos la tarifa total dependiendo el tipo de vehiculo alquolado
 	if (EsMoto())
 	{
 		cMoto* moto = dynamic_cast<cMoto*>(Vehiculo);
@@ -64,7 +64,7 @@ int cAlquiler::CalcularDiasReserva()
 
 	return diasreserva;
 }
-
+//setters y getters
 void cAlquiler::setInicio(string fecha)
 {
 	string dia, mes, anio;
@@ -103,6 +103,7 @@ string cAlquiler::getClienteDNI()
 {
 	return Cliente->getClave();
 }
+//metodos que nos ayudan a saber el tipo de veiculo alquilado
 bool cAlquiler::EsMoto()
 {
 	cMoto* moto = dynamic_cast<cMoto*> (Vehiculo);
@@ -151,7 +152,7 @@ bool cAlquiler::EsCombi()
 	} else bool_Combi = false;
 	return bool_Combi;
 }
-
+//to string e imprmir 
 string cAlquiler::to_stringAlquiler()
 {
 	stringstream ss;

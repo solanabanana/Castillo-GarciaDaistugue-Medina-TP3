@@ -1,6 +1,6 @@
 #include "cVehiculo.h"
 
-
+//constructor
 cVehiculo::cVehiculo(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color) : Npatente(npatente), Nchasis(nchasis), Npoliza(npoliza), TarifaBase(tarifabase), CapacidadPasajeros(capacidadpasajeros)
 {
 	Estado = estado;
@@ -8,6 +8,7 @@ cVehiculo::cVehiculo(int estado, int npatente, int nchasis, int npoliza, int tar
 	UltimoMantenimiento = new cFecha();
 	Alquilado = false;
 }
+//getters y setters
 string cVehiculo::getClave() const
 {
 	return to_string(Npatente);
@@ -61,6 +62,7 @@ string cVehiculo::getUltimoMantenimiento() const
 
 	return s;
 }
+//sobrecarga del operador
 ostream& operator << (ostream& os, const cVehiculo* vehiculo)
 {
 	os << "Estado: " << to_string(vehiculo->getEstado()) << "%" << endl;

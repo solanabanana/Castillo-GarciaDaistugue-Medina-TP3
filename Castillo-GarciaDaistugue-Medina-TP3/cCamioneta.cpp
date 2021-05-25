@@ -1,5 +1,5 @@
 #include "cCamioneta.h"
-
+//cntructor y destructor
 cCamioneta::cCamioneta(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color) : cVehiculo(estado, npatente, nchasis, npoliza, tarifabase, capacidadpasajeros, color)
 {
 	AlquilerxDia = 1500;

@@ -1,5 +1,5 @@
 #include "cCombi.h"
-
+//constructor y destructor
 cCombi::cCombi(int estado, int npatente, int nchasis, int npoliza, int tarifabase, int capacidadpasajeros, string color): cVehiculo(estado, npatente, nchasis, npoliza, tarifabase, capacidadpasajeros, color)
 {
 	AlquilerxDia = 2000;
@@ -11,7 +11,7 @@ cCombi::~cCombi(){
 	if (SillaSeguridad != NULL) delete SillaSeguridad;
 	if (AsientoRebatible != NULL) delete AsientoRebatible;
 }
-
+//implementacion de metodos
 int cCombi::CalcularTarifa(int dias, int adicional1, int adicional2) const
 {
 	int total = 0;
@@ -20,7 +20,7 @@ int cCombi::CalcularTarifa(int dias, int adicional1, int adicional2) const
 	return total;
 }
 
-void cCombi::PasosMantenimiento() const
+void cCombi::PasosMantenimiento() const//imprimimos pasos
 {
 	stringstream ss;
 	ss << "Pasos del mantenimiento de las combis:" << endl;

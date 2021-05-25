@@ -68,7 +68,7 @@ inline cListaT<T>::~cListaT(void)
 		delete[]lista;
 	}
 }
-
+//implementacion de metodos propios de la lista
 template<class T>
 inline void cListaT<T>::AgregarObjeto(T* objeto)
 {
